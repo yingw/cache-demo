@@ -1,0 +1,20 @@
+<config xmlns='http://www.ehcache.org/v3'
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd
+							http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
+
+    <cache-template name="default">
+        <expiry>
+            <ttl>600</ttl>
+        </expiry>
+        <resources>
+            <heap>100</heap>
+            <offheap unit="MB">10</offheap>
+            <!--<disk persistent="true" unit="MB">20</disk>-->
+        </resources>
+        <jsr107:mbeans enable-statistics="true"/>
+    </cache-template>
+
+    <cache alias="users" uses-template="default"/>
+</config>
