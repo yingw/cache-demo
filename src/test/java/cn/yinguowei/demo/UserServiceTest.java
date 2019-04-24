@@ -27,18 +27,30 @@ public class UserServiceTest {
     public void saveOrUpdate() {
     }
 
-    @Test
+//    @Test
     public void findAll() {
         List<User> users = userService.findAll();
         assertThat(users, notNullValue());
         assertThat(users.size(), equalTo(5));
     }
+    /*
+    Ehcache local:
+    500times = 700ms
 
+    Redis on internet:
+    1000times = 30s
+    500times = 15s
+
+    Redis on intranet (77):
+    500times = 7s
+
+    Redis on localhost:
+    500times = 2.x s
+    */
     @Test
     public void findAllBatch() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 500; i++) {
             findAll();
-
         }
     }
 
